@@ -22,19 +22,20 @@ if args.detect:
 def do_chop():
     # Chopping
     # detect chopping board
+    delta_x = -10
 
     while pyautogui.pixelMatchesColor( 1277, 300, (210, 164, 85), tolerance=2):
         logging.debug('(%s) found chopping board: %s' , sys._getframe().f_code.co_name, str(pyautogui.pixel(1279,253)))
 
         # see when moving block comes into chop range
         # if  pyautogui.pixelMatchesColor( 1176, 308, (83, 203, 255), tolerance=2) :
-        if  pyautogui.pixelMatchesColor( 1170, 308, (83, 203, 255), tolerance=2) :
+        if  pyautogui.pixelMatchesColor( 1175+delta_x, 308, (83, 203, 255), tolerance=2) :
             logging.debug('(%s) found chop range pixel: %s' , sys._getframe().f_code.co_name, str(pyautogui.pixel(1176,308)))
             if not args.detect:
                 # Click the mouse
                 # NOTE: pyautogui.click() was too fast and not detected, needed a way to slow it down.
                 pyautogui.mouseDown()
-                time.sleep(0.01)
+                # time.sleep(0.01)
                 pyautogui.mouseUp()
                 logging.info('(%s) Chop!' , sys._getframe().f_code.co_name)
     return
