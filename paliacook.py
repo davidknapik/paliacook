@@ -61,6 +61,26 @@ def do_mixing():
 
     return
 
+def do_roll():
+    # Rolling Pin
+    #
+    # detect rolling board
+    while pyautogui.pixelMatchesColor( 598, 834, (208, 164, 85), tolerance=2):
+        logging.debug('(%s) found rolling board: %s' , sys._getframe().f_code.co_name, str(pyautogui.pixel(1279,253)))
+
+        # see when moving block comes into range
+        # if  pyautogui.pixelMatchesColor( 587, 783, (163, 227, 250), tolerance=2) :
+        if  (pyautogui.pixelMatchesColor( 592, 308, (152, 223, 251), tolerance=3) | pyautogui.pixelMatchesColor( 592, 783, (163, 227, 250), tolerance=3)):
+            logging.debug('(%s) found roll range pixel: %s' , sys._getframe().f_code.co_name, str(pyautogui.pixel(1176,308)))
+            if not args.detect:
+                # Click the mouse
+                # NOTE: pyautogui.click() was too fast and not detected, needed a way to slow it down.
+                pyautogui.mouseDown()
+                # time.sleep(0.01)
+                pyautogui.mouseUp()
+                logging.info('(%s) Roll!' , sys._getframe().f_code.co_name)
+    return
+
 
 def main():
     """main loop"""
@@ -72,6 +92,7 @@ def main():
 
         do_chop()
         do_mixing()
+        do_roll()
 
 
 if __name__ == "__main__":
