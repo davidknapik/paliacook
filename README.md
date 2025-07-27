@@ -4,7 +4,7 @@ Palia cooking minigame
 
 ## Description
 
-Simple script to help with the 'chopping' during the Palia cooking mini-game.
+Simple script to help with the 'chopping/stiring/rolling' during the Palia cooking mini-game.
 
 This script detects when the moving marker enters the chop zone and clicks the mouse button.
 
@@ -39,6 +39,13 @@ Currently only automated chopping is available.
 ```
 paliacook.py -h
 ```
+
+## Troubleshooting
+
+I used sharex to grab the pixel color & location. If your screen resolution is different or the color pallet changes it should be simple enough to update with new values.
+
+Occasionally the first 'chop' misses. I'm not sure why. Every chop after seems to be fine. Even starting a new recipe works ok. It's almost like that first mouse down action when the program first runs is delayed slightly.
+
 
 ## Authors
 
